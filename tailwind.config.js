@@ -11,5 +11,5 @@ module.exports = {
       'mobile': {'min': '300px', 'max': '800px'}
     }
   },
-  plugins: [],
+  plugins: []
 }
