@@ -7,7 +7,8 @@ module.exports = {
       }
     },
     screens: {
-      'mobile': {'min': '100px', 'max': '800px'}
+      'mobilemin': {'min': '100px', 'max': '300px'},
+      'mobile': {'min': '300px', 'max': '800px'}
     }
   },
   plugins: [],
