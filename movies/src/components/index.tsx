@@ -1,6 +1,11 @@
+import { useState } from "react";
+import { searchByMovie } from "../../api/url";
 import { PopularMovies } from "./Steep/PopularMovies";
+import { SearchByMovie } from "./Steep/SearchByMovie";
 
 export function Movies() {
+  const [searching, setSearching] = useState(false);
+  const [movie, setMovie] = useState<string>("");
 
   return (
     <main className="w-[100%] mobilemin:w-[550px] flex flex-col items-center">
@@ -14,8 +19,19 @@ export function Movies() {
           type="text"
           name="pesquisar"
           placeholder="Digite algum filme para pesquisar..."
+          onChange={(data) => setMovie(data.target.value)}
         />
-        <button type="submit">
+        <button
+          type="button"
+          onClick={(event) => {
+            event.preventDefault();
+            setSearching(true);
+            setMovie("");
+            searchByMovie(movie)
+              .then((res) => {localStorage.setItem("moviesResultsSearch",JSON.stringify(res));})
+              .catch((error) => error);
+          }}
+        >
           <img src="../../../image/pesquisar.svg" alt="pesquisar" />
         </button>
       </div>
@@ -25,9 +41,7 @@ export function Movies() {
         <span>Mostrar apenas meus filmes favoritos.</span>
       </div>
 
-      <div>
-        <PopularMovies/>
-      </div>
+      <div>{searching ? <SearchByMovie /> : <PopularMovies />}</div>
     </main>
   );
-};
+}
