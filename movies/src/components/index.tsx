@@ -1,6 +1,4 @@
-import { useState } from "react";
-import { PatternMovies } from "./Steep/PatternMovies";
-import { RandomMovies } from "./Steep/RandomMovies";
+import { PopularMovies } from "./Steep/PopularMovies";
 
 export function Movies() {
 
@@ -28,7 +26,7 @@ export function Movies() {
       </div>
 
       <div>
-        <RandomMovies/>
+        <PopularMovies/>
       </div>
     </main>
   );
