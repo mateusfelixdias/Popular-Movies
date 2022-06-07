@@ -1,11 +1,10 @@
 import { useState } from "react";
-import { searchByMovie } from "../../api/url";
 import { PopularMovies } from "./Steep/PopularMovies";
 import { SearchByMovie } from "./Steep/SearchByMovie";
 
 export function Movies() {
-  const [searching, setSearching] = useState(false);
-  const [movie, setMovie] = useState<string>("");
+  const [movieName, setMovieName] = useState<string>("");
+  const [userSearchedForMovie, setUserSearchedForMovie] = useState<boolean>(false);
 
   return (
     <main className="w-[100%] mobilemin:w-[550px] flex flex-col items-center">
@@ -15,21 +14,19 @@ export function Movies() {
 
       <div className="bg-[#ffffff33] w-[50%] m-auto m-0 mb-[8px] flex p-[8px] rounded-lg">
         <input
-          className="p-[8px] w-[100%] h-[100%] text-zinc-900 outline-none border-none bg-transparent"
+          className=" p-[8px] w-[100%] h-[100%] text-zinc-900 outline-none border-none bg-transparent"
           type="text"
           name="pesquisar"
           placeholder="Digite algum filme para pesquisar..."
-          onChange={(data) => setMovie(data.target.value)}
+          onChange={(data) => {
+            setMovieName(data.target.value);
+          }}
         />
         <button
           type="button"
           onClick={(event) => {
             event.preventDefault();
-            setSearching(true);
-            setMovie("");
-            searchByMovie(movie)
-              .then((res) => {localStorage.setItem("moviesResultsSearch",JSON.stringify(res));})
-              .catch((error) => error);
+            setUserSearchedForMovie(true);
           }}
         >
           <img src="../../../image/pesquisar.svg" alt="pesquisar" />
@@ -41,7 +38,16 @@ export function Movies() {
         <span>Mostrar apenas meus filmes favoritos.</span>
       </div>
 
-      <div>{searching ? <SearchByMovie /> : <PopularMovies />}</div>
+      <div>
+        {userSearchedForMovie ? (
+          <SearchByMovie
+            movieName={movieName}
+            userSearchedForMovie={userSearchedForMovie}
+          />
+        ) : (
+          <PopularMovies />
+        )}
+      </div>
     </main>
   );
-}
+};
