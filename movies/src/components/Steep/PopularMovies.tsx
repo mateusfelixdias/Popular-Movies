@@ -1,8 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { api } from "../../../api/api";
 import { api_key } from "../../../api/chaveApi";
 import { PatternMovies } from "./PatternMovies";
-
 
 export function PopularMovies() {
   const [resultsPopularMovies, setResultsPopularMovies] = useState<any>();
@@ -11,10 +10,13 @@ export function PopularMovies() {
   async function popularMoveis() {
     const moviesPopulares = await api.get(`movie/popular?api_key=${api_key}&language=en-US&page=1`);
     const { results } = moviesPopulares.data;
-    setResultsPopularMovies(results)
+    setResultsPopularMovies(results);
     setShowPopularMovies(true);
   };
-  popularMoveis();
+
+  useEffect(() => {
+    popularMoveis();
+  }, []);
 
   return (
     <div>
