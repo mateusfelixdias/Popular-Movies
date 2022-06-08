@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+import { useIsFavorite } from "../../../hooks/isFavorite";
+
 type movieAttributesPros = {
   alt: any;
   description: any;
@@ -13,6 +16,13 @@ export function PatternMovies({
   rating,
   title,
 }: movieAttributesPros) {
+  const { isFavorite, setIsFavoriteTrue, setIsFavoriteFalse } = useIsFavorite();
+  const [userClickToFavoriteMovie, setUserClickToFavoriteMovie] = useState<boolean>(false);
+
+  useEffect(() => {
+    isFavorite ? setIsFavoriteFalse() : setIsFavoriteTrue();
+  }, [userClickToFavoriteMovie]);
+
   return (
     <>
       <div className="text-zinc-900 flex items-center justify-between gap-[8px] bg-[#1D1C3B] rounded-lg p-[4px] m-0 m-auto mb-[8px] w-[100%] shadow-2xl mt-8">
@@ -34,7 +44,19 @@ export function PatternMovies({
             />
             <span className="text-zinc-100 gap-[4px]">{rating}</span>
 
-            <img className="flex ml-2" src="../../image/coraçãoVazio.svg" />
+            <img
+              className="flex ml-2"
+              onClick={() =>
+                userClickToFavoriteMovie
+                  ? setUserClickToFavoriteMovie(false)
+                  : setUserClickToFavoriteMovie(true)
+              }
+              src={
+                isFavorite
+                  ? "../../image/coraçãoVazio.svg"
+                  : "../../image/coração.svg"
+              }
+            />
             <span className="text-zinc-100 flex items-center">Favoritar</span>
           </div>
 
@@ -45,4 +67,4 @@ export function PatternMovies({
       </div>
     </>
   );
-}
+};
