@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { api } from "../../../api/api";
 import { api_key } from "../../../api/chaveApi";
 import { PatternMovies } from "./PatternMovies";
@@ -16,14 +16,25 @@ export function SearchByMovie({
   const [searchResultForMovie, setSearchResultForMovie] = useState<any>();
 
   async function searchByMovie() {
-    const searchMovies = await api.get(`search/movie?query=${movieName}&page=1&include_adult=false&api_key=${api_key}`);
-    const { results } = searchMovies.data;
-    setSearchResultForMovie(results);
-    setShowSearchedMovies(true);
+    try {
+      const searchMovies = await api.get(`search/movie?query=${movieName}&page=1&include_adult=false&api_key=${api_key}`);
+      const { results } = searchMovies.data;
+      if (!results || results.length === 0) {
+        window.alert(`Não foi possivel encontra o filme, tente novamente!`);
+      };
+      setSearchResultForMovie(results);
+      setShowSearchedMovies(true);
+    } catch (error) {
+      window.alert(`Não foi possivel encontra o filme, tente novamente!`);
+      setShowSearchedMovies(false);
+    };
   };
 
-  if (userSearchedForMovie) { searchByMovie() };
+  useEffect(() => {
+    searchByMovie();
+  }, [userSearchedForMovie]);
 
+  
   return (
     <div>
       {showSearchedMovies
