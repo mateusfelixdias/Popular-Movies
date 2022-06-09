@@ -10,5 +10,5 @@ app.use(cors());
 app.use(express.json());
 app.use(routes);
 app.listen(PORT, () => {
-    console.log(`Servidor executando na porta ${PORT}.`);
+  console.log(`Servidor executando na porta ${PORT}.`);
 });
