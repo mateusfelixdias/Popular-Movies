@@ -7,6 +7,7 @@ export function Movies() {
   const [movieName, setMovieName] = useState<string>("");
   const [userSearchedForMovie, setUserSearchedForMovie] = useState<boolean>(false);
   const { showOnlyFavorites, setShowOnlyFavoritesOn, setShowOnlyFavoritesOff } = useShowOnlyFavorites();
+  
 
   return (
     <main className="w-[100%] mobilemin:w-[550px] flex flex-col items-center">
