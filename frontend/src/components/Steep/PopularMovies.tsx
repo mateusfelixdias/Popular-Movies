@@ -7,7 +7,7 @@ export function PopularMovies() {
   const [resultsPopularMovies, setResultsPopularMovies] = useState<any>();
   const [showPopularMovies, setShowPopularMovies] = useState<boolean>(false);
 
-  async function popularMoveis() {
+  async function getPopularMoveis() {
     const moviesPopulares = await api.get(`movie/popular?api_key=${api_key}&language=en-US&page=1`);
     const { results } = moviesPopulares.data;
     setResultsPopularMovies(results);
@@ -15,7 +15,7 @@ export function PopularMovies() {
   };
 
   useEffect(() => {
-    popularMoveis();
+    getPopularMoveis();
   }, []);
 
   return (
