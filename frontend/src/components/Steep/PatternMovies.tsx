@@ -9,6 +9,7 @@ type movieAttributesPros = {
   title: any;
 };
 
+
 export function PatternMovies({
   alt,
   description,
@@ -19,6 +20,7 @@ export function PatternMovies({
   const { isFavorite, setIsFavoriteTrue, setIsFavoriteFalse } = useIsFavorite();
   const movieIsFavotiteOrNo = localStorage.getItem(title);
 
+  
   return (
     <>
       <div className="text-zinc-900 flex items-center justify-between gap-[8px] bg-[#1D1C3B] rounded-lg p-[4px] m-0 m-auto mb-[8px] w-[100%] shadow-2xl mt-8">
@@ -47,7 +49,8 @@ export function PatternMovies({
                   isFavorite
                     ? (
                         setIsFavoriteFalse(),
-                        localStoreIsFavorite(title, `false`))
+                        localStoreIsFavorite(title, `false`)
+                      )
                     : (
                         setIsFavoriteTrue(),
                         localStoreIsFavorite(title, `true`)
