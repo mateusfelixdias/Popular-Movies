@@ -10,14 +10,17 @@ export function PopularMovies() {
   async function getPopularMoveis() {
     const moviesPopulares = await api.get(`movie/popular?api_key=${api_key}&language=en-US&page=1`);
     const { results } = moviesPopulares.data;
+
     setResultsPopularMovies(results);
     setShowPopularMovies(true);
   };
+
 
   useEffect(() => {
     getPopularMoveis();
   }, []);
 
+  
   return (
     <div>
       {showPopularMovies
