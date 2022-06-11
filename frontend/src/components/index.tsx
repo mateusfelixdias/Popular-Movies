@@ -7,8 +7,8 @@ export function Movies() {
   const [movieName, setMovieName] = useState<string>("");
   const [userSearchedForMovie, setUserSearchedForMovie] = useState<boolean>(false);
   const { showOnlyFavorites, setShowOnlyFavoritesOn, setShowOnlyFavoritesOff } = useShowOnlyFavorites();
-  
 
+  
   return (
     <main className="w-[100%] mobilemin:w-[550px] flex flex-col items-center">
       <h1 className="text-4xl text-[#f1f5f9] pb-8 text-center italic">
@@ -23,7 +23,9 @@ export function Movies() {
           placeholder="Digite algum filme para pesquisar..."
           onChange={(data) => {
             setMovieName(data.target.value);
-            setUserSearchedForMovie(false);
+            data.target.value.length == 0
+            ? setUserSearchedForMovie(false)
+            : null;
           }}
         />
         <button
