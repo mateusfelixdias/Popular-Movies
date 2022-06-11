@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { localStoreIsFavorite } from "../../../api/apiMethodsIsFavorite";
 import { useIsFavorite } from "../../../hooks/isFavorite";
 
 type movieAttributesPros = {
@@ -17,11 +17,7 @@ export function PatternMovies({
   title,
 }: movieAttributesPros) {
   const { isFavorite, setIsFavoriteTrue, setIsFavoriteFalse } = useIsFavorite();
-  const [userClickToFavoriteMovie, setUserClickToFavoriteMovie] = useState<boolean>(false);
-
-  useEffect(() => {
-    isFavorite ? setIsFavoriteFalse() : setIsFavoriteTrue();
-  }, [userClickToFavoriteMovie]);
+  const movieIsFavotiteOrNo = localStorage.getItem(title);
 
   return (
     <>
@@ -46,15 +42,22 @@ export function PatternMovies({
 
             <img
               className="flex ml-2"
-              onClick={() =>
-                userClickToFavoriteMovie
-                  ? setUserClickToFavoriteMovie(false)
-                  : setUserClickToFavoriteMovie(true)
-              }
+              onClick={() => {
+                {
+                  isFavorite
+                    ? (
+                        setIsFavoriteFalse(),
+                        localStoreIsFavorite(title, `false`))
+                    : (
+                        setIsFavoriteTrue(),
+                        localStoreIsFavorite(title, `true`)
+                      );
+                }
+              }}
               src={
-                isFavorite
-                  ? "../../image/coraçãoVazio.svg"
-                  : "../../image/coração.svg"
+                movieIsFavotiteOrNo === "true"
+                  ? "../../image/coração.svg"
+                  : "../../image/coraçãoVazio.svg"
               }
             />
             <span className="text-zinc-100 flex items-center">Favoritar</span>
