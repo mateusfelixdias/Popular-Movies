@@ -1,10 +1,10 @@
 import { addMoviesFavorites } from "./added/addMoviesFavorites";
-import { updateMoviesFavorites } from "./update/updateMoviesFavorite";
+import { deleteMoviesFavorites } from "./delete/deleteMoviesFavorite"
 import express from "express";
 
 const routes = express.Router();
 
-routes.put("/update", updateMoviesFavorites);
+routes.delete("/delete", deleteMoviesFavorites);
 
 routes.post("/isFavorite", addMoviesFavorites);
 
