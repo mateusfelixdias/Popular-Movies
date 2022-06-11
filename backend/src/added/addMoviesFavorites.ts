@@ -1,9 +1,11 @@
 import { movieFavorite } from "../database/moviesFavorites";
 
-export async function addMoviesFavorites(req: any, res:any) {
-    const { favorite, movie } = req.body;
+export async function addMoviesFavorites(req: any, res: any) {
+  const { alt, description, image, rating, title, isFavorite } = req.body;
 
-    await movieFavorite.create({ favorite, movie }, error => {
-        !error ? res.send(`Sucess`): res.send(`No sucess`);
-    });
+  const dataMovies = { alt, description, image, rating, title, isFavorite };
+
+  await movieFavorite.create( dataMovies, (error) => { 
+    !error ? res.send(`Sucess`) : res.send(`No sucess`); 
+  });
 };
