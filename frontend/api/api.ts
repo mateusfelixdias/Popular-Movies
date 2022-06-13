@@ -5,5 +5,5 @@ export const api = axios.create({
 });
 
 export const apiMoviesIsFavorites = axios.create({
-    baseURL: 'http://localhost:3003'
+    baseURL: 'http://localhost:8080'
 });

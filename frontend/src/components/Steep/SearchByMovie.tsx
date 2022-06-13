@@ -18,9 +18,9 @@ export function SearchByMovie({
 
   async function searchByMovie() {
     try {
-      const searchMovies = await api.get( `search/movie?query=${movieName}&page=1&include_adult=false&api_key=${api_key}`);
+      const searchMovies = await api.get(`search/movie?query=${movieName}&page=1&include_adult=false&api_key=${api_key}`);
       const { results } = searchMovies.data;
-      
+
       if (!results || results.length === 0) {
         window.alert(`Não foi possivel encontra o filme, tente novamente!`);
         setShowSearchedMovies(false);
@@ -28,14 +28,14 @@ export function SearchByMovie({
         setSearchResultForMovie(results);
         setShowSearchedMovies(true);
       };
-
+      
     } catch (error) {
       window.alert(`Não foi possivel encontra o filme, tente novamente!`);
       setShowSearchedMovies(false);
     };
   };
 
-
+  
   useEffect(() => {
     searchByMovie();
   }, [userSearchedForMovie]);
