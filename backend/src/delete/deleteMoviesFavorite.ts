@@ -8,6 +8,6 @@ export async function deleteMoviesFavorites(req: any, res: any) {
   const deleteMovie = await movieFavorite.deleteOne(way);
 
   if(!deleteMovie){
-    console.log(`No sucess.`)
+    res.send(`No sucess.`);
   };
 };
