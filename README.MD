@@ -5,4 +5,4 @@ Este projeto foi inicializado com <a href="https://vitejs.dev/guide/">Vite.</a>
 instalar as depedências.
 
 # npm run dev
-Executa o projeto no local: http://localhost:3000/movies
+Executa o projeto no local: http://localhost:3000
