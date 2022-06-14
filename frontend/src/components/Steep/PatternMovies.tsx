@@ -21,18 +21,7 @@ export function PatternMovies({
   const { isFavorite, setIsFavoriteTrue, setIsFavoriteFalse } = useIsFavorite();
   const movieIsFavotiteOrNo = localStorage.getItem(title);
 
-  function isFavoriteOrNo(){
-    if(localStorage.getItem(title) === null){
-      localStoreIsFavorite(title, "true")
-    }else{
-     if(localStorage.getItem(title) === "true"){
-      localStoreIsFavorite(title, "false")
-     }else{
-      localStoreIsFavorite(title, "true")
-     };
-    };
-  };
-
+  
   return (
     <>
       <div className="text-zinc-900 flex items-center justify-between gap-[8px] bg-[#1D1C3B] rounded-lg p-[4px] m-0 m-auto mb-[8px] w-[100%] shadow-2xl mt-8">
@@ -56,7 +45,11 @@ export function PatternMovies({
 
             <img
               className="flex ml-2"
-              onClick={() => isFavoriteOrNo()}
+              onClick={() => {
+                isFavorite
+                  ? (setIsFavoriteFalse(), localStoreIsFavorite(title, "false"), deleteToYouFavorites(title, "true"))
+                  : (setIsFavoriteTrue(), localStoreIsFavorite(title, "true"), addMoviesFavorites( alt, description, image, rating, title, "true"));
+              }}
               src={
                 movieIsFavotiteOrNo === "true"
                   ? "../../image/coração.svg"
@@ -74,8 +67,3 @@ export function PatternMovies({
     </>
   );
 };
-
-
-// isFavorite
-// ? (setIsFavoriteFalse(), localStoreIsFavorite(title, "false"), deleteToYouFavorites(title, "true"))
-// : (setIsFavoriteTrue(), localStoreIsFavorite(title, "true"), addMoviesFavorites(alt, description, image, rating, title, "true"))
