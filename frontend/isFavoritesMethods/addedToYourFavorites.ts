@@ -6,7 +6,7 @@ export async function addMoviesFavorites(
   image: string,
   rating: string,
   title: string,
-  isFavorite: string
+  isFavorite: any
 ) {
   await apiMoviesIsFavorites.post("/isFavorite", {
     alt,
