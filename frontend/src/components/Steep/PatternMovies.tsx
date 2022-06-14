@@ -2,7 +2,6 @@ import { addMoviesFavorites } from "../../../isFavoritesMethods/addedToYourFavor
 import { deleteToYouFavorites } from "../../../isFavoritesMethods/deleteToYouFavorites";
 import { localStoreIsFavorite } from "../../../isFavoritesMethods/addedToYourFavoritesOnLocalstorage";
 import { useIsFavorite } from "../../../hooks/isFavorite";
-import { FormEvent, useEffect } from "react";
 
 type movieAttributesPros = {
   alt: any;
@@ -17,18 +16,24 @@ export function PatternMovies({
   description,
   image,
   rating,
-  title,
+  title
 }: movieAttributesPros) {
   const { isFavorite, setIsFavoriteTrue, setIsFavoriteFalse } = useIsFavorite();
   const movieIsFavotiteOrNo = localStorage.getItem(title);
 
   function name() {
     if(isFavorite){
-      setIsFavoriteFalse()
+      deleteToYouFavorites(title, movieIsFavotiteOrNo);
+      localStoreIsFavorite(title, 'false');
+      setIsFavoriteFalse();
     } else {
+      addMoviesFavorites( alt, description, image, rating, title, movieIsFavotiteOrNo);
+      localStoreIsFavorite(title, 'true');
       setIsFavoriteTrue();
     };
   };
+  console.log(movieIsFavotiteOrNo);
+
 
   return (
     <>
@@ -58,7 +63,7 @@ export function PatternMovies({
             >
               <img
                 src={
-                  isFavorite
+                  movieIsFavotiteOrNo === 'true'
                     ? "../../image/coração.svg"
                     : "../../image/coraçãoVazio.svg"
                 }
