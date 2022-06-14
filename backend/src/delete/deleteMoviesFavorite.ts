@@ -1,11 +1,13 @@
 import { movieFavorite } from "../database/moviesFavorites";
 
 export async function deleteMoviesFavorites(req: any, res: any) {
-  const { title, isFavorite } = req.body;
+  const { title } = req.body;
+
+  const movie = await movieFavorite.findOne({ way: { title } });
 
   const way = { way: { title } };
 
-  if(isFavorite === "true"){
+  if(movie?.isFavorite === "false"){
     const deleteMovie = await movieFavorite.deleteOne(way);
 
     if(!deleteMovie){
