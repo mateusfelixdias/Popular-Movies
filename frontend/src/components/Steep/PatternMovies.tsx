@@ -2,6 +2,7 @@ import { addMoviesFavorites } from "../../../isFavoritesMethods/addedToYourFavor
 import { deleteToYouFavorites } from "../../../isFavoritesMethods/deleteToYouFavorites";
 import { localStoreIsFavorite } from "../../../isFavoritesMethods/addedToYourFavoritesOnLocalstorage";
 import { useIsFavorite } from "../../../hooks/isFavorite";
+import { FormEvent, useEffect } from "react";
 
 type movieAttributesPros = {
   alt: any;
@@ -21,7 +22,14 @@ export function PatternMovies({
   const { isFavorite, setIsFavoriteTrue, setIsFavoriteFalse } = useIsFavorite();
   const movieIsFavotiteOrNo = localStorage.getItem(title);
 
-  
+  function name() {
+    if(isFavorite){
+      setIsFavoriteFalse()
+    } else {
+      setIsFavoriteTrue();
+    };
+  };
+
   return (
     <>
       <div className="text-zinc-900 flex items-center justify-between gap-[8px] bg-[#1D1C3B] rounded-lg p-[4px] m-0 m-auto mb-[8px] w-[100%] shadow-2xl mt-8">
@@ -43,23 +51,23 @@ export function PatternMovies({
             />
             <span className="text-zinc-100 gap-[4px]">{rating}</span>
 
-            <img
-              className="flex ml-2"
-              onClick={() => {
-                isFavorite
-                  ? (setIsFavoriteFalse(), localStoreIsFavorite(title, "false"), deleteToYouFavorites(title, "true"))
-                  : (setIsFavoriteTrue(), localStoreIsFavorite(title, "true"), addMoviesFavorites( alt, description, image, rating, title, "true"));
-              }}
-              src={
-                movieIsFavotiteOrNo === "true"
-                  ? "../../image/coração.svg"
-                  : "../../image/coraçãoVazio.svg"
-              }
-            />
+            <button 
+              type="button"
+              className="flex items-center ml-8 w-[50px] h-[50px]"
+              onClick={(event) => { event.preventDefault(); name();}}
+            >
+              <img
+                src={
+                  isFavorite
+                    ? "../../image/coração.svg"
+                    : "../../image/coraçãoVazio.svg"
+                }
+              />
+            </button>
             <span className="text-zinc-100 flex items-center">Favoritar</span>
           </div>
 
-          <div className="whitespace-normal w-[100%] ml-20 text-zinc-100 mobile:mr-[60px] mobilemin:mr-[65px]">
+          <div className="whitespace-normal w-[100%] ml-10 text-zinc-100 mobile:mr-[60px] mobile:ml-20 mobilemin:mr-[65px]">
             {description}
           </div>
         </div>
