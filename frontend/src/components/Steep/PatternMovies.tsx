@@ -23,11 +23,11 @@ export function PatternMovies({
 
   function savingFavoriteMoviesToLocalStorage() {
     if(isFavorite){
-      deleteToYouFavorites(alt);
+      deleteToYouFavorites();
       selectingMovieAsFavorite(title, 'false');
       setIsFavoriteFalse();
     } else {
-      addMoviesFavorites( alt, description, image, rating, title);
+      addMoviesFavorites(alt, description, image, rating, title);
       selectingMovieAsFavorite(title, 'true');
       setIsFavoriteTrue();
     };
