@@ -15,12 +15,10 @@ export function PopularMovies() {
     setShowPopularMovies(true);
   };
 
-
   useEffect(() => {
     getPopularMoveis();
   }, []);
 
-  
   return (
     <div>
       {showPopularMovies
