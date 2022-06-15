@@ -1,3 +1,3 @@
-export async function deleteToYouFavorites(movies: string) {
-    localStorage.setItem(movies, "");
+export async function deleteToYouFavorites() {
+    localStorage.setItem("allMovies", "");
 };

@@ -6,9 +6,12 @@ export async function addMoviesFavorites(
   title: string,
 ) {
   const favoriteMovie = { alt, description, image, rating, title };
+  const allFavoritesMovies:any = [];
   localStorage.setItem(alt, JSON.stringify(favoriteMovie));
+  allFavoritesMovies.push(localStorage.getItem(alt));
+  localStorage.setItem("allMovies", allFavoritesMovies);
 };
 
 export function selectingMovieAsFavorite(title: string, isFavorite: string) {
-  localStorage.setItem(title, `${isFavorite}`);
+  localStorage.setItem(title, String(isFavorite));
 };
