@@ -6,14 +6,14 @@ export function MoviesFavorites() {
   const [notHaveMoviesAsFavorites, setNotHaveMoviesAsFavorites] = useState<boolean>(false);
 
   useEffect(() => {
-    const allFavoriteMovies = localStorage.getItem("allMovies");
+    const MoviesFavorites = localStorage.getItem("allMovies");
 
-    if (allFavoriteMovies?.length === 0) {
+    if (MoviesFavorites?.length === 0) {
       window.alert(`No Momento Você Não Selecionou Nenhum Filme Como Favorito!`);
       setNotHaveMoviesAsFavorites(false);
     } else {
       setNotHaveMoviesAsFavorites(true);
-      setAllMoviesFavorites(JSON.parse(allFavoriteMovies || ""));
+      setAllMoviesFavorites(JSON.parse(MoviesFavorites  || ""));
     }
   }, []);
 
