@@ -35,11 +35,9 @@ export function SearchByMovie({
     };
   };
 
-  
   useEffect(() => {
     searchByMovie();
   }, [userSearchedForMovie]);
-
 
   return (
     <div>
