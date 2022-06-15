@@ -4,12 +4,10 @@ import { MoviesFavorites } from "./Steep/MoviesFavorites";
 import { PopularMovies } from "./Steep/PopularMovies";
 import { SearchByMovie } from "./Steep/SearchByMovie";
 
-
 export function Movies() {
   const [movieName, setMovieName] = useState<string>("");
   const [userSearchedForMovie, setUserSearchedForMovie] = useState<boolean>(false);
   const { showOnlyFavorites, setShowOnlyFavoritesOn, setShowOnlyFavoritesOff } = useShowOnlyFavorites();
-
 
   return (
     <main className="w-[100%] mobilemin:w-[550px] flex flex-col items-center">
@@ -62,10 +60,10 @@ export function Movies() {
               userSearchedForMovie={userSearchedForMovie}
             />
           ) : (
-            <MoviesFavorites />
+            <MoviesFavorites/>
           )
         ) : showOnlyFavorites == "on" ? (
-          <MoviesFavorites />
+          <MoviesFavorites/>
         ) : (
           <PopularMovies />
         )}
