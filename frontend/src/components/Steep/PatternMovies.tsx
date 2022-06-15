@@ -1,6 +1,6 @@
-import { addMoviesFavorites } from "../../../isFavoritesMethods/addedToYourFavorites";
-import { deleteToYouFavorites } from "../../../isFavoritesMethods/deleteToYouFavorites";
-import { localStoreIsFavorite } from "../../../isFavoritesMethods/addedToYourFavoritesOnLocalstorage";
+import { addMoviesFavorites } from "../../../savingFavoriteMovies/addedToYourFavoritesOnLocalstorage";
+import { deleteToYouFavorites } from "../../../savingFavoriteMovies/deleteToYouFavoritesLocalStorage";
+import { selectingMovieAsFavorite } from "../../../savingFavoriteMovies/addedToYourFavoritesOnLocalstorage";
 import { useIsFavorite } from "../../../hooks/isFavorite";
 
 type movieAttributesPros = {
@@ -19,21 +19,19 @@ export function PatternMovies({
   title
 }: movieAttributesPros) {
   const { isFavorite, setIsFavoriteTrue, setIsFavoriteFalse } = useIsFavorite();
-  const movieIsFavotiteOrNo = localStorage.getItem(title);
+  const movieIsFavoriteOrNo = localStorage.getItem(title);
 
-  function name() {
+  function savingFavoriteMoviesToLocalStorage() {
     if(isFavorite){
-      deleteToYouFavorites(title, movieIsFavotiteOrNo);
-      localStoreIsFavorite(title, 'false');
+      deleteToYouFavorites(alt);
+      selectingMovieAsFavorite(title, 'false');
       setIsFavoriteFalse();
     } else {
-      addMoviesFavorites( alt, description, image, rating, title, movieIsFavotiteOrNo);
-      localStoreIsFavorite(title, 'true');
+      addMoviesFavorites( alt, description, image, rating, title);
+      selectingMovieAsFavorite(title, 'true');
       setIsFavoriteTrue();
     };
   };
-  console.log(movieIsFavotiteOrNo);
-
 
   return (
     <>
@@ -59,11 +57,11 @@ export function PatternMovies({
             <button 
               type="button"
               className="flex items-center ml-8 w-[50px] h-[50px]"
-              onClick={(event) => { event.preventDefault(); name();}}
+              onClick={(event) => { event.preventDefault(); savingFavoriteMoviesToLocalStorage();}}
             >
               <img
                 src={
-                  movieIsFavotiteOrNo === 'true'
+                  movieIsFavoriteOrNo === "true"
                     ? "../../image/coração.svg"
                     : "../../image/coraçãoVazio.svg"
                 }
