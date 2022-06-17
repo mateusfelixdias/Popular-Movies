@@ -42,7 +42,7 @@ export function PatternMovies({
             src={image}
             alt={alt}
           />
-          <div className="flex flex-col items-center text-zinc-100">
+          <div className="text-center text-zinc-100">
             <span> {title} </span>
           </div>
 
@@ -56,7 +56,7 @@ export function PatternMovies({
 
             <button 
               type="button"
-              className="flex items-center ml-8 w-[50px] h-[50px]"
+              className="flex items-center w-[50px] h-[50px] ml-[30px]"
               onClick={(event) => { event.preventDefault(); savingFavoriteMoviesToLocalStorage();}}
             >
               <img
