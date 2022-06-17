@@ -3,6 +3,7 @@ import { useShowOnlyFavorites } from "../hooks/showOnlyFavorites";
 import { MoviesFavorites } from "./Steep/MoviesFavorites";
 import { PopularMovies } from "./Steep/PopularMovies";
 import { SearchByMovie } from "./Steep/SearchByMovie";
+import persquisar from "../../image//pesquisar.svg";
 
 export function Movies() {
   const [movieName, setMovieName] = useState<string>("");
@@ -32,7 +33,7 @@ export function Movies() {
         >
           <img
             className="pr-2"
-            src="../../../image/pesquisar.svg"
+            src={persquisar}
             alt="pesquisar"
           />
         </button>
