@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useShowOnlyFavorites } from "../../hooks/showOnlyFavorites";
+import { useShowOnlyFavorites } from "../hooks/showOnlyFavorites";
 import { MoviesFavorites } from "./Steep/MoviesFavorites";
 import { PopularMovies } from "./Steep/PopularMovies";
 import { SearchByMovie } from "./Steep/SearchByMovie";
@@ -15,7 +15,7 @@ export function Movies() {
         Filmes Populares
       </h1>
 
-      <div className="bg-[#ffffff33] w-[50%] m-auto m-0 mb-[8px] flex p-[8px] rounded-lg">
+      <div className="bg-[#ffffff33] w-[50%] m-auto m-0 mb-[8px] flex p-[8px] rounded-lg mobilemin:w-[100%]">
         <input
           className=" p-[8px] w-[100%] h-[100%] text-zinc-900 outline-none border-none bg-transparent italic text-zinc-100"
           type="text"
