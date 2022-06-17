@@ -1,7 +1,7 @@
-import { addMoviesFavorites } from "../../../savingFavoriteMovies/addedToYourFavoritesOnLocalstorage";
-import { deleteToYouFavorites } from "../../../savingFavoriteMovies/deleteToYouFavoritesLocalStorage";
-import { selectingMovieAsFavorite } from "../../../savingFavoriteMovies/addedToYourFavoritesOnLocalstorage";
-import { useIsFavorite } from "../../../hooks/isFavorite";
+import { addMoviesFavorites } from "../../saving-movies-favorites-localstorage/addedToYourFavoritesOnLocalstorage";
+import { deleteToYouFavorites } from "../../saving-movies-favorites-localstorage/deleteToYouFavoritesLocalStorage";
+import { selectingMovieAsFavorite } from "../../saving-movies-favorites-localstorage/addedToYourFavoritesOnLocalstorage";
+import { useIsFavorite } from "../../hooks/isFavorite";
 
 type movieAttributesPros = {
   alt: any;
@@ -23,7 +23,7 @@ export function PatternMovies({
 
   function savingFavoriteMoviesToLocalStorage() {
     if(isFavorite){
-      deleteToYouFavorites();
+      deleteToYouFavorites(alt);
       selectingMovieAsFavorite(title, 'false');
       setIsFavoriteFalse();
     } else {
@@ -70,7 +70,7 @@ export function PatternMovies({
             <span className="text-zinc-100 flex items-center">Favoritar</span>
           </div>
 
-          <div className="whitespace-normal w-[100%] ml-10 text-zinc-100 mobile:mr-[60px] mobile:ml-20 mobilemin:mr-[65px]">
+          <div className="whitespace-normal w-[90%] text-zinc-100 mobile:mr-[60px] mobile:ml-[60px] mobilemin:mr-[65px] mobilemin:ml-[65px]">
             {description}
           </div>
         </div>
