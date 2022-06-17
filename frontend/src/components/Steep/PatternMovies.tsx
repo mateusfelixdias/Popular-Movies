@@ -1,4 +1,7 @@
 import { addMoviesFavorites } from "../../saving-movies-favorites-localstorage/addedToYourFavoritesOnLocalstorage";
+import coração from "../../../image/coração.svg";
+import coraçãoVazio from  "../../../image/coraçãoVazio.svg";
+import estrelinha from "../../../image/estrelinha.svg";
 import { deleteToYouFavorites } from "../../saving-movies-favorites-localstorage/deleteToYouFavoritesLocalStorage";
 import { selectingMovieAsFavorite } from "../../saving-movies-favorites-localstorage/addedToYourFavoritesOnLocalstorage";
 import { useIsFavorite } from "../../hooks/isFavorite";
@@ -49,7 +52,7 @@ export function PatternMovies({
           <div className="flex items-center gap-[8px]">
             <img
               className="flex items-center gap-[8px]"
-              src="../../image/estrelinha.svg"
+              src={estrelinha}
               alt="estrelinha"
             />
             <span className="text-zinc-100 gap-[4px]">{rating}</span>
@@ -62,8 +65,8 @@ export function PatternMovies({
               <img
                 src={
                   movieIsFavoriteOrNo === "true"
-                    ? "../../image/coração.svg"
-                    : "../../image/coraçãoVazio.svg"
+                    ? coração
+                    : coraçãoVazio
                 }
               />
             </button>
