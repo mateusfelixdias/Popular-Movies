@@ -1,11 +1,11 @@
 import { useState } from "react";
 
 export function useShowOnlyFavorites(){
-    const [showOnlyFavorites, setShowOnlyFavorites] = useState<"on" | "off">("off");
+    const [showOnlyFavorites, setShowOnlyFavorites] = useState<boolean>(false);
 
     return {
-        showOnlyFavorites: showOnlyFavorites,
-        setShowOnlyFavoritesOn: () => setShowOnlyFavorites('on'),
-        setShowOnlyFavoritesOff: () => setShowOnlyFavorites('off')
+        showOnlyFavorites,
+        setShowOnlyFavoritesOn: () => setShowOnlyFavorites(true),
+        setShowOnlyFavoritesOff: () => setShowOnlyFavorites(false)
     };
 };
