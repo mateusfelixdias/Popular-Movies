@@ -70,7 +70,7 @@ export function PatternMovies({
             <span className="text-zinc-100 flex items-center">Favoritar</span>
           </div>
 
-          <div className="whitespace-normal w-[90%] text-zinc-100 mobile:mr-[60px] mobile:ml-[60px] mobilemin:mr-[65px] mobilemin:ml-[65px]">
+          <div className="whitespace-normal w-[90%] text-zinc-100 mobile:text-center mobilemin:text-center">
             {description}
           </div>
         </div>
