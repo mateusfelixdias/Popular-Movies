@@ -8,7 +8,7 @@ export function PopularMovies() {
   const [showPopularMovies, setShowPopularMovies] = useState<boolean>(false);
 
   async function getPopularMoveis() {
-    const moviesPopulares = await api.get(`movie/popular?api_key=${api_key}&language=en-US&page=1`);
+    const moviesPopulares = await api.get(`movie/popular?api_key=${api_key}&language=pt-BR&page=1`);
     const { results } = moviesPopulares.data;
 
     setResultsPopularMovies(results);
