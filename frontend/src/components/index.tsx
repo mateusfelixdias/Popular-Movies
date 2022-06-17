@@ -16,7 +16,7 @@ export function Movies() {
         Filmes Populares
       </h1>
 
-      <div className="bg-[#ffffff33] w-[50%] m-auto m-0 mb-[8px] flex p-[8px] rounded-lg mobile:w-[100%] mobilemin:w-[100%]">
+      <div className="bg-[#ffffff33] w-[60%] m-auto m-0 mb-[8px] flex p-[8px] rounded-lg mobile:w-[70%]  mobilemin:w-[100%]">
         <input
           className=" p-[8px] w-[100%] h-[100%] text-zinc-900 outline-none border-none bg-transparent italic text-zinc-100"
           type="text"
