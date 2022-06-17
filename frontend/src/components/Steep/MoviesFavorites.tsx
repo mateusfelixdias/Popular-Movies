@@ -13,8 +13,8 @@ export function MoviesFavorites() {
       setNotHaveMoviesAsFavorites(false);
     } else {
       setNotHaveMoviesAsFavorites(true);
-      setAllMoviesFavorites(JSON.parse(MoviesFavorites  || ""));
-    }
+      setAllMoviesFavorites(JSON.parse(MoviesFavorites || ""));
+    };
   }, []);
 
   return (
