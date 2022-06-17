@@ -42,9 +42,8 @@ export function Movies() {
         <input
           className="mr-[10px]"
           type="checkbox"
-          value={showOnlyFavorites}
           onChange={() =>
-            showOnlyFavorites == "on"
+            showOnlyFavorites
               ? setShowOnlyFavoritesOff()
               : setShowOnlyFavoritesOn()
           }
@@ -54,15 +53,15 @@ export function Movies() {
 
       <div>
         {userSearchedForMovie ? (
-          showOnlyFavorites == "off" ? (
-            <SearchByMovie
-              movieName={movieName}
-              userSearchedForMovie={userSearchedForMovie}
-            />
-          ) : (
+          showOnlyFavorites ? (
             <MoviesFavorites/>
+          ) : (
+            <SearchByMovie
+            movieName={movieName}
+            userSearchedForMovie={userSearchedForMovie}
+          />
           )
-        ) : showOnlyFavorites == "on" ? (
+        ) : showOnlyFavorites ? (
           <MoviesFavorites/>
         ) : (
           <PopularMovies />
