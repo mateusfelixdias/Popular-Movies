@@ -1,14 +1,22 @@
-import { useState } from "react";
+import imgSearch from "../../image//pesquisar.svg";
+import { useEffect, useState } from "react";
 import { useShowOnlyFavorites } from "../hooks/showOnlyFavorites";
 import { MoviesFavorites } from "./Steep/MoviesFavorites";
 import { PopularMovies } from "./Steep/PopularMovies";
 import { SearchByMovie } from "./Steep/SearchByMovie";
-import persquisar from "../../image//pesquisar.svg";
 
 export function Movies() {
   const [movieName, setMovieName] = useState<string>("");
   const [userSearchedForMovie, setUserSearchedForMovie] = useState<boolean>(false);
   const { showOnlyFavorites, setShowOnlyFavoritesOn, setShowOnlyFavoritesOff } = useShowOnlyFavorites();
+
+  useEffect(() => {
+    document.addEventListener("keypress", (event) => {
+      if (event.key === "Enter") {
+        setUserSearchedForMovie(true);
+      };
+    });
+  }, []);
 
   return (
     <main className="w-[100%] mobilemin:w-[550px] flex flex-col items-center">
@@ -31,11 +39,7 @@ export function Movies() {
           disabled={movieName.length == 0 ? true : false}
           onClick={() => setUserSearchedForMovie(true)}
         >
-          <img
-            className="pr-2"
-            src={persquisar}
-            alt="pesquisar"
-          />
+          <img className="pr-2" src={imgSearch} alt="pesquisar" />
         </button>
       </div>
 
@@ -55,15 +59,15 @@ export function Movies() {
       <div>
         {userSearchedForMovie ? (
           showOnlyFavorites ? (
-            <MoviesFavorites/>
+            <MoviesFavorites />
           ) : (
             <SearchByMovie
-            movieName={movieName}
-            userSearchedForMovie={userSearchedForMovie}
-          />
+              movieName={movieName}
+              userSearchedForMovie={userSearchedForMovie}
+            />
           )
         ) : showOnlyFavorites ? (
-          <MoviesFavorites/>
+          <MoviesFavorites />
         ) : (
           <PopularMovies />
         )}
