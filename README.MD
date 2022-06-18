@@ -1,8 +1,15 @@
 # Introdução ao vite.
 Este projeto foi inicializado com <a href="https://vitejs.dev/guide/">Vite.</a>
 
-# npm i
+# hospedagem.
+O frontend foi hospedado na: <a href="https://vercel.com/">Vercel.</a>
+
+Você pode acessar o app logo abaixo &#x1F603;.</br>
+<a href="https://popular-movies-gmslrhls0-mateusfelixdias.vercel.app/">Popular Movies.</a>
+
+# Caso você queira o projeto em seu ambiente de desenvolvimento.
+<h2>npm i</h2>
 instalar as depedências.
 
-# npm run dev
+<h2>npm run dev</h2>
 Executa o projeto no local: http://localhost:3000
