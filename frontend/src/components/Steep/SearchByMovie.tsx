@@ -18,7 +18,7 @@ export function SearchByMovie({
 
   async function searchByMovie() {
     try {
-      const searchMovies = await api.get(`search/movie?query=${movieName}&page=1&include_adult=false&api_key=${api_key}`);
+      const searchMovies = await api.get(`search/movie?query=${movieName}&page=1&include_adult=false&language=pt-BR&api_key=${api_key}`);
       const { results } = searchMovies.data;
 
       if (!results || results.length === 0) {
