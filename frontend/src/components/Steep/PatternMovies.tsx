@@ -1,7 +1,7 @@
+import imgHeart from "../../../image/coração.svg";
+import imgEmptyheart from "../../../image/coraçãoVazio.svg";
+import imgLittlestar from "../../../image/estrelinha.svg";
 import { addMoviesFavorites } from "../../saving-movies-favorites-localstorage/addedToYourFavoritesOnLocalstorage";
-import coração from "../../../image/coração.svg";
-import coraçãoVazio from  "../../../image/coraçãoVazio.svg";
-import estrelinha from "../../../image/estrelinha.svg";
 import { deleteToYouFavorites } from "../../saving-movies-favorites-localstorage/deleteToYouFavoritesLocalStorage";
 import { selectingMovieAsFavorite } from "../../saving-movies-favorites-localstorage/addedToYourFavoritesOnLocalstorage";
 import { useIsFavorite } from "../../hooks/isFavorite";
@@ -19,19 +19,19 @@ export function PatternMovies({
   description,
   image,
   rating,
-  title
+  title,
 }: movieAttributesPros) {
   const { isFavorite, setIsFavoriteTrue, setIsFavoriteFalse } = useIsFavorite();
   const movieIsFavoriteOrNo = localStorage.getItem(title);
 
   function savingFavoriteMoviesToLocalStorage() {
-    if(isFavorite){
+    if (isFavorite) {
       deleteToYouFavorites(alt);
-      selectingMovieAsFavorite(title, 'false');
+      selectingMovieAsFavorite(title, "false");
       setIsFavoriteFalse();
     } else {
       addMoviesFavorites(alt, description, image, rating, title);
-      selectingMovieAsFavorite(title, 'true');
+      selectingMovieAsFavorite(title, "true");
       setIsFavoriteTrue();
     };
   };
@@ -52,22 +52,21 @@ export function PatternMovies({
           <div className="flex items-center gap-[8px]">
             <img
               className="flex items-center gap-[8px]"
-              src={estrelinha}
+              src={imgLittlestar}
               alt="estrelinha"
             />
             <span className="text-zinc-100 gap-[4px]">{rating}</span>
 
-            <button 
+            <button
               type="button"
               className="flex items-center w-[50px] h-[50px] ml-[30px]"
-              onClick={(event) => { event.preventDefault(); savingFavoriteMoviesToLocalStorage();}}
+              onClick={(event) => {
+                event.preventDefault();
+                savingFavoriteMoviesToLocalStorage();
+              }}
             >
               <img
-                src={
-                  movieIsFavoriteOrNo === "true"
-                    ? coração
-                    : coraçãoVazio
-                }
+                src={movieIsFavoriteOrNo === "true" ? imgHeart : imgEmptyheart}
               />
             </button>
             <span className="text-zinc-100 flex items-center">Favoritar</span>
