@@ -1,8 +1,8 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ReactDOM from "react-dom/client";
+import { Movies } from "./components";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import "./global.css";
-import { Movies } from "./components";
 
 const roots = ReactDOM.createRoot(document.getElementById("root")!);
 
