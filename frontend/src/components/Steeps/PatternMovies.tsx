@@ -34,7 +34,7 @@ export function PatternMovies({
       selectingMoviesWithTrueOrFalseInLocalStorage(title, "true");
       setIsFavoriteTrue();
     };
-  };
+  }
 
   return (
     <>
