@@ -8,7 +8,6 @@ export async function addedFavoriteMoviesInLocalstorage(
   title: string
 ) {
   const pathToAllFavoriteMovies = "all favorite movies";
-  
   const allFavoriteMovies =  getToYouFavoriteslocalStorage();
 
   const addingMovieToFavorites = allFavoriteMovies || [];
@@ -16,9 +15,4 @@ export async function addedFavoriteMoviesInLocalstorage(
 
   const addingMovieToFavoritesJson = JSON.stringify(addingMovieToFavorites);
   localStorage.setItem(pathToAllFavoriteMovies, addingMovieToFavoritesJson);
-};
-
-
-export function selectingMoviesWithTrueOrFalseInLocalStorage(title: string, isFavorite: string) {
-  localStorage.setItem(title, String(isFavorite));
 };
