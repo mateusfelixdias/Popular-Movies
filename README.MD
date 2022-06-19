@@ -5,7 +5,7 @@ Este projeto foi inicializado com <a href="https://vitejs.dev/guide/">Vite.</a>
 O frontend foi hospedado na: <a href="https://vercel.com/">Vercel.</a>
 
 Você pode acessar o app logo ao lado &#x1F603;:
-<a href="https://popular-movies-gmslrhls0-mateusfelixdias.vercel.app/">Popular Movies.</a>
+<a href="https://popular-movies-nr5k6ruor-mateusfelixdias.vercel.app/">Popular Movies.</a>
 
 # Caso você queira o projeto em seu ambiente de desenvolvimento.
 <h2>npm i</h2>
