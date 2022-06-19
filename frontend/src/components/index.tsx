@@ -1,20 +1,20 @@
 import imgSearch from "../../image//pesquisar.svg";
+import { MoviesFavorites } from "./Steeps/MoviesFavorites";
 import { useEffect, useState } from "react";
 import { useShowOnlyFavorites } from "../hooks/showOnlyFavorites";
-import { MoviesFavorites } from "./Steep/MoviesFavorites";
-import { PopularMovies } from "./Steep/PopularMovies";
-import { SearchByMovie } from "./Steep/SearchByMovie";
+import { PopularMovies } from "./Steeps/PopularMovies";
+import { SearchByMovie } from "./Steeps/SearchByMovie";
 
 export function Movies() {
   const [movieName, setMovieName] = useState<string>("");
-  const [userSearchedForMovie, setUserSearchedForMovie] = useState<boolean>(false);
+  const [ifUsersSearchForAMovie, setIfUsersSearchForAMovie] = useState<boolean>(false);
   const { showOnlyFavorites, setShowOnlyFavoritesOn, setShowOnlyFavoritesOff } = useShowOnlyFavorites();
 
   useEffect(() => {
     document.addEventListener("keypress", (event) => {
       if (event.key === "Enter") {
-        setUserSearchedForMovie(true);
-      };
+        setIfUsersSearchForAMovie(true);
+      }
     });
   }, []);
 
@@ -24,20 +24,20 @@ export function Movies() {
         Filmes Populares
       </h1>
 
-      <div className="bg-[#ffffff33] w-[60%] m-auto m-0 mb-[8px] flex p-[8px] rounded-lg mobile:w-[70%]  mobilemin:w-[100%]">
+      <div className="bg-[#ffffff33] w-[60%] m-auto m-0 mb-[8px] flex p-[8px] rounded-lg mobile:w-[70%] mobilemin:w-[100%]">
         <input
           className=" p-[8px] w-[100%] h-[100%] text-zinc-900 outline-none border-none bg-transparent italic text-zinc-100"
           type="text"
           placeholder="Digite algum filme para pesquisar..."
           onChange={(data) => {
             setMovieName(data.target.value);
-            setUserSearchedForMovie(false);
+            setIfUsersSearchForAMovie(false);
           }}
         />
         <button
           type="button"
           disabled={movieName.length == 0 ? true : false}
-          onClick={() => setUserSearchedForMovie(true)}
+          onClick={() => setIfUsersSearchForAMovie(true)}
         >
           <img className="pr-2" src={imgSearch} alt="pesquisar" />
         </button>
@@ -57,14 +57,11 @@ export function Movies() {
       </div>
 
       <div>
-        {userSearchedForMovie ? (
+        {ifUsersSearchForAMovie ? (
           showOnlyFavorites ? (
             <MoviesFavorites />
           ) : (
-            <SearchByMovie
-              movieName={movieName}
-              userSearchedForMovie={userSearchedForMovie}
-            />
+            <SearchByMovie movieName={movieName} userSearchedForAMovie={true} />
           )
         ) : showOnlyFavorites ? (
           <MoviesFavorites />
