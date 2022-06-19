@@ -42,20 +42,20 @@ export function PatternMovies({
         <div className="flex items-center gap-4 mobile:flex-col mobilemin:flex-col">
           <img
             className="w-[92px] h-[92px] mr-4 rounded-lg mobile:w-[66px] mobile:h-[66px]"
-            src={ image }
-            alt={ alt }
+            src={image}
+            alt={alt}
           />
           <div className="text-center text-zinc-100">
-            <span> { title } </span>
+            <span> {title} </span>
           </div>
 
           <div className="flex items-center gap-[8px]">
             <img
               className="flex items-center gap-[8px]"
-              src={ imgLittlestar }
+              src={imgLittlestar}
               alt="estrelinha"
             />
-            <span className="text-zinc-100 gap-[4px]">{ rating }</span>
+            <span className="text-zinc-100 gap-[4px]">{rating}</span>
 
             <button
               type="button"
@@ -66,7 +66,7 @@ export function PatternMovies({
               }}
             >
               <img
-                src={ trueOrFalseMovieInLocalstorage === "true" ? imgHeart : imgEmptyheart }
+                src={trueOrFalseMovieInLocalstorage === "true" ? imgHeart : imgEmptyheart}
               />
             </button>
             <span className="text-zinc-100 flex items-center">Favoritar</span>
