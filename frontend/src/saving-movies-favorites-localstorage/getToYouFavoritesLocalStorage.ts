@@ -3,5 +3,7 @@ export function getToYouFavoriteslocalStorage() {
 
   if (allMoviesSelectedAsFavorites) {
     return JSON.parse(allMoviesSelectedAsFavorites);
+  } else {
+    return [];
   };
 };
