@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { getToYouFavoriteslocalStorage } from "../../saving-movies-favorites-localstorage/getToYouFavoritesLocalStorage";
 import { PatternMovies } from "./PatternMovies";
 
+
 export function MoviesFavorites() {
   const [allMoviesSelectedAsFavorites, setAllMoviesSelectedAsFavorites] = useState([]);
   const [notHaveMoviesAsFavorites, setNotHaveMoviesAsFavorites] = useState<boolean>(false);
+
 
   useEffect(() => {
     const getAllMoviesSelectedAsFavorites = getToYouFavoriteslocalStorage();
@@ -17,6 +19,7 @@ export function MoviesFavorites() {
       setAllMoviesSelectedAsFavorites(getAllMoviesSelectedAsFavorites);
     };
   }, []);
+
 
   return (
     <>

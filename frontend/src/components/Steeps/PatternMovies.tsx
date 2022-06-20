@@ -6,7 +6,8 @@ import { deleteMovieFromFavorites } from "../../saving-movies-favorites-localsto
 import { useIsFavorite } from "../../hooks/isFavorite";
 import { selectingMoviesWithTrueOrFalseInLocalStorage } from "../../saving-movies-favorites-localstorage/selectingMoviesWithTrueOrFalseInLocalStorage";
 
-type movieAttributesPros = {
+
+type movieAttributesProps = {
   alt: string;
   description: string;
   image: string;
@@ -14,15 +15,17 @@ type movieAttributesPros = {
   title: string;
 };
 
+
 export function PatternMovies({
   alt,
   description,
   image,
   rating,
   title,
-}: movieAttributesPros) {
+}: movieAttributesProps) {
   const { isFavorite, setIsFavoriteTrue, setIsFavoriteFalse } = useIsFavorite();
   const trueOrFalseMovieInLocalstorage = localStorage.getItem(title);
+
 
   function savingOrDeleteFavoriteMoviesToLocalStorage() {
     if (isFavorite) {
@@ -36,6 +39,7 @@ export function PatternMovies({
     };
   };
 
+  
   return (
     <>
       <div className="text-zinc-900 flex items-center justify-between gap-[8px] bg-[#1D1C3B] rounded-lg p-[4px] m-0 m-auto mb-[8px] w-[100%] shadow-2xl mt-8">
@@ -60,10 +64,7 @@ export function PatternMovies({
             <button
               type="button"
               className="flex items-center w-[50px] h-[50px] ml-[30px]"
-              onClick={(event) => {
-                event.preventDefault();
-                savingOrDeleteFavoriteMoviesToLocalStorage();
-              }}
+              onClick={savingOrDeleteFavoriteMoviesToLocalStorage}
             >
               <img
                 src={trueOrFalseMovieInLocalstorage === "true" ? imgHeart : imgEmptyheart}

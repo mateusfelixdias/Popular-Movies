@@ -5,10 +5,12 @@ import { useShowOnlyFavorites } from "../hooks/showOnlyFavorites";
 import { PopularMovies } from "./Steeps/PopularMovies";
 import { SearchByMovie } from "./Steeps/SearchByMovie";
 
-export function Movies() {
+
+export function MoviesPopulares() {
   const [movieName, setMovieName] = useState<string>("");
   const [ifUsersSearchForAMovie, setIfUsersSearchForAMovie] = useState<boolean>(false);
   const { showOnlyFavorites, setShowOnlyFavoritesOn, setShowOnlyFavoritesOff } = useShowOnlyFavorites();
+
 
   useEffect(() => {
     document.addEventListener("keypress", (event) => {
@@ -16,14 +18,14 @@ export function Movies() {
         setIfUsersSearchForAMovie(true);
       }
     });
-  }, []);
+  }, [ifUsersSearchForAMovie]);
+
 
   return (
-    <main className="w-[100%] mobilemin:w-[550px] flex flex-col items-center">
+    <div className="w-[100%] mobilemin:w-[550px] flex flex-col items-center">
       <h1 className="text-4xl text-[#f1f5f9] pb-8 text-center italic">
         Filmes Populares
       </h1>
-
       <div className="bg-[#ffffff33] w-[60%] m-auto m-0 mb-[8px] flex p-[8px] rounded-lg mobile:w-[70%] mobilemin:w-[100%]">
         <input
           className=" p-[8px] w-[100%] h-[100%] text-zinc-900 outline-none border-none bg-transparent italic text-zinc-100"
@@ -69,6 +71,6 @@ export function Movies() {
           <PopularMovies />
         )}
       </div>
-    </main>
+    </div>
   );
 };

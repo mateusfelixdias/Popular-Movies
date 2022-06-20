@@ -4,41 +4,44 @@ import { api_key } from "../../../api/chaveApi";
 import { PatternMovies } from "./PatternMovies";
 import { PopularMovies } from "./PopularMovies";
 
-type MoviesResultsSearchProps = {
+
+type UserEventWhenSearchingForMovieProps = {
   movieName: string;
   userSearchedForAMovie: boolean;
 };
 
+
 export function SearchByMovie({
   movieName,
   userSearchedForAMovie,
-}: MoviesResultsSearchProps) {
+}: UserEventWhenSearchingForMovieProps) {
   const [showSearchedMovies, setShowSearchedMovies] = useState<boolean>(false);
   const [searchResultForMovie, setSearchResultForMovie] = useState<any>();
 
-  async function searchByMovie() {
-    try {
-      const searchMovies = await api.get(`search/movie?query=${movieName}&page=1&include_adult=false&language=pt-BR&api_key=${api_key}`);
-      const { results } = searchMovies.data;
-
-      if (!results || results.length === 0) {
-        window.alert(`Não foi possivel encontrar o filme, tente novamente!`);
-        setShowSearchedMovies(false);
-      } else {
-        setSearchResultForMovie(results);
-        setShowSearchedMovies(true);
-      };
-      
-    } catch (error) {
-      window.alert(`Não foi possivel encontrar o filme, tente novamente!`);
-      setShowSearchedMovies(false);
-    };
-  };
 
   useEffect(() => {
+    async function searchByMovie() {
+      try {
+        const { results } = (await api.get(`search/movie?query=${movieName}&page=1&include_adult=false&language=pt-BR&api_key=${api_key}`)).data;
+  
+        if (!results || results.length === 0) {
+          window.alert(`Não foi possivel encontrar o filme, tente novamente!`);
+          setShowSearchedMovies(false);
+        } else {
+          setSearchResultForMovie(results);
+          setShowSearchedMovies(true);
+        };
+        
+      } catch (error) {
+        window.alert(`Não foi possivel encontrar o filme, tente novamente!`);
+        setShowSearchedMovies(false);
+      };
+    };
+
     searchByMovie();
   }, [userSearchedForAMovie]);
 
+  
   return (
     <div>
       {showSearchedMovies ? (

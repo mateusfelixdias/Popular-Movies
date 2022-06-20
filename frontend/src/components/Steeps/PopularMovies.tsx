@@ -3,19 +3,22 @@ import { api } from "../../../api/api";
 import { api_key } from "../../../api/chaveApi";
 import { PatternMovies } from "./PatternMovies";
 
+
 export function PopularMovies() {
   const [resultsPopularMovies, setResultsPopularMovies] = useState([]);
   const [showPopularMovies, setShowPopularMovies] = useState<boolean>(false);
 
-  async function getPopularMoveis() {
-    const { results } = (await api.get(`movie/popular?api_key=${api_key}&language=pt-BR&page=1`)).data;
-    setResultsPopularMovies(results);
-    setShowPopularMovies(true);
-  };
-
+  
   useEffect(() => {
+    async function getPopularMoveis() {
+      const { results } = (await api.get(`movie/popular?api_key=${api_key}&language=pt-BR&page=1`)).data;
+      setResultsPopularMovies(results);
+      setShowPopularMovies(true);
+    };
+
     getPopularMoveis();
   }, []);
+
 
   return (
     <div>
