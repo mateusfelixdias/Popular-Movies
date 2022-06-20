@@ -42,7 +42,7 @@ export function PatternMovies({
   
   return (
     <>
-      <div className="text-zinc-900 flex items-center justify-between gap-[8px] bg-[#1D1C3B] rounded-lg p-[4px] m-0 m-auto mb-[8px] w-[100%] shadow-2xl mt-8">
+      <div className="text-zinc-900 flex items-center justify-between gap-[8px] bg-[#1D1C3B] rounded-lg p-[4px] m-auto mb-[8px] w-[100%] shadow-2xl mt-8">
         <div className="flex items-center gap-4 mobile:flex-col mobilemin:flex-col">
           <img
             className="w-[92px] h-[92px] mr-4 rounded-lg mobile:w-[66px] mobile:h-[66px]"

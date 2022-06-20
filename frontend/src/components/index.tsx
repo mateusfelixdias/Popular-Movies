@@ -26,9 +26,9 @@ export function MoviesPopulares() {
       <h1 className="text-4xl text-[#f1f5f9] pb-8 text-center italic">
         Filmes Populares
       </h1>
-      <div className="bg-[#ffffff33] w-[60%] m-auto m-0 mb-[8px] flex p-[8px] rounded-lg mobile:w-[70%] mobilemin:w-[100%]">
+      <div className="bg-[#ffffff33] w-[60%] m-0 mb-[8px] flex p-[8px] rounded-lg mobile:w-[70%] mobilemin:w-[100%]">
         <input
-          className=" p-[8px] w-[100%] h-[100%] text-zinc-900 outline-none border-none bg-transparent italic text-zinc-100"
+          className=" p-[8px] w-[100%] h-[100%] text-zinc-900 outline-none border-none bg-transparent italic"
           type="text"
           placeholder="Digite algum filme para pesquisar..."
           onChange={(data) => {
