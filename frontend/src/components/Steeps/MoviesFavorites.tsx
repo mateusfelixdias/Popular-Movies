@@ -24,6 +24,7 @@ export function MoviesFavorites() {
         ? allMoviesSelectedAsFavorites.map((movie: any) => {
             return (
               <PatternMovies
+                key={movie.title}
                 alt={movie.alt}
                 description={movie.description}
                 image={movie.image}

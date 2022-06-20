@@ -45,6 +45,7 @@ export function SearchByMovie({
         searchResultForMovie.map((movie: any) => {
           return (
             <PatternMovies
+              key={movie.title}
               alt={`Imagem do(a) ${movie.title}.`}
               description={movie.overview}
               image={`https://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
