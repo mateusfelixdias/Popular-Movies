@@ -16,7 +16,7 @@ export function SearchByMovie({
   userSearchedForAMovie,
 }: UserEventWhenSearchingForMovieProps) {
   const [showSearchedMovies, setShowSearchedMovies] = useState<boolean>(false);
-  const [searchResultForMovie, setSearchResultForMovie] = useState<any>();
+  const [searchResultForMovie, setSearchResultForMovie] = useState([]);
 
 
   useEffect(() => {
