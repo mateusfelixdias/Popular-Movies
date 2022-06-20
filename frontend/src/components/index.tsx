@@ -16,7 +16,7 @@ export function MoviesPopulares() {
     document.addEventListener("keypress", (event) => {
       if (event.key === "Enter") {
         setIfUsersSearchForAMovie(true);
-      }
+      };
     });
   }, [ifUsersSearchForAMovie]);
 
