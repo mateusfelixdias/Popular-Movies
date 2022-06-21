@@ -4,6 +4,7 @@ import imgLittlestar from "../../../image/estrelinha.svg";
 import { addedFavoriteMoviesInLocalstorage } from "../../saving-movies-favorites-localstorage/addedFavoriteMoviesInLocalstorage";
 import { deleteMovieFromFavorites } from "../../saving-movies-favorites-localstorage/deleteMovieFromFavorites";
 import { useIsFavorite } from "../../hooks/isFavorite";
+import { useEffect } from "react";
 import { selectingMoviesWithTrueOrFalseInLocalStorage } from "../../saving-movies-favorites-localstorage/selectingMoviesWithTrueOrFalseInLocalStorage";
 
 
@@ -27,6 +28,13 @@ export function PatternMovies({
   const trueOrFalseMovieInLocalstorage = localStorage.getItem(title);
 
 
+  useEffect(() => {
+    if(trueOrFalseMovieInLocalstorage === "true" && !isFavorite){
+      setIsFavoriteTrue();
+    };
+  }, []);
+
+
   function savingOrDeleteFavoriteMoviesToLocalStorage() {
     if (isFavorite) {
       deleteMovieFromFavorites(alt);
@@ -39,7 +47,7 @@ export function PatternMovies({
     };
   };
 
-  
+
   return (
     <>
       <div className="text-zinc-900 flex items-center justify-between gap-[8px] bg-[#1D1C3B] rounded-lg p-[4px] m-auto mb-[8px] w-[100%] shadow-2xl mt-8">
