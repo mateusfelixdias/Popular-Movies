@@ -4,6 +4,15 @@ import { api_key } from "../../../api/chaveApi";
 import { PatternMovies } from "./PatternMovies";
 
 
+type Movie = {
+  backdrop_path: string;
+  image: string;
+  overview: string;
+  title: string;
+  vote_average: string;
+};
+
+
 export function PopularMovies() {
   const [resultsPopularMovies, setResultsPopularMovies] = useState([]);
   const [showPopularMovies, setShowPopularMovies] = useState<boolean>(false);
@@ -23,7 +32,7 @@ export function PopularMovies() {
   return (
     <div>
       {showPopularMovies
-        ? resultsPopularMovies.map((movie: any) => {
+        ? resultsPopularMovies.map((movie: Movie) => {
             return (
               <PatternMovies
                 key={movie.title}

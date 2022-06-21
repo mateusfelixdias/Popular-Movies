@@ -11,6 +11,15 @@ type UserEventWhenSearchingForMovieProps = {
 };
 
 
+type Movie = {
+  backdrop_path: string;
+  image: string;
+  overview: string;
+  title: string;
+  vote_average: string;
+};
+
+
 export function SearchByMovie({
   movieName,
   userSearchedForAMovie,
@@ -45,7 +54,7 @@ export function SearchByMovie({
   return (
     <div>
       {showSearchedMovies ? (
-        searchResultForMovie.map((movie: any) => {
+        searchResultForMovie.map((movie: Movie) => {
           return (
             <PatternMovies
               key={movie.title}
