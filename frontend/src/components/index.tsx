@@ -1,4 +1,4 @@
-import imgSearch from "../../image//pesquisar.svg";
+import imgSearch from "../../images/pesquisar.svg";
 import { MoviesFavorites } from "./Steeps/MoviesFavorites";
 import { useEffect, useState } from "react";
 import { useShowOnlyFavorites } from "../hooks/showOnlyFavorites";

@@ -1,6 +1,6 @@
-import imgHeart from "../../../image/coração.svg";
-import imgEmptyheart from "../../../image/coraçãoVazio.svg";
-import imgLittlestar from "../../../image/estrelinha.svg";
+import imgHeart from "../../../images/coração.svg";
+import imgEmptyheart from "../../../images/coraçãoVazio.svg";
+import imgLittlestar from "../../../images/estrelinha.svg";
 import { addedFavoriteMoviesInLocalstorage } from "../../saving-movies-favorites-localstorage/addedFavoriteMoviesInLocalstorage";
 import { deleteMovieFromFavorites } from "../../saving-movies-favorites-localstorage/deleteMovieFromFavorites";
 import { useIsFavorite } from "../../hooks/isFavorite";
