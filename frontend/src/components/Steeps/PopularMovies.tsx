@@ -11,8 +11,6 @@ type Movie = {
   vote_average: string;
 };
 
-const API_KEY = import.meta.env.VITE_API_KEY;
-
 export function PopularMovies() {
   const [resultsPopularMovies, setResultsPopularMovies] = useState([]);
   const [showPopularMovies, setShowPopularMovies] = useState<boolean>(false);
@@ -20,7 +18,7 @@ export function PopularMovies() {
   
   useEffect(() => {
     async function getPopularMoveis() {
-      const { results } = (await api.get(`movie/popular?api_key=${API_KEY}&language=pt-BR&page=1`)).data;
+      const { results } = (await api.get(`movie/popular?api_key=${import.meta.env.VITE_API_KEY}&language=pt-BR&page=1`)).data;
       setResultsPopularMovies(results);
       setShowPopularMovies(true);
     };
