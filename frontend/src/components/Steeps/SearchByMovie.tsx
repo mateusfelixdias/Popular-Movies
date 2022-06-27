@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { api } from "../../../api/api";
-import { api_key } from "../../../api/chaveApi";
 import { PatternMovies } from "./PatternMovies";
 import { PopularMovies } from "./PopularMovies";
 
@@ -31,7 +30,7 @@ export function SearchByMovie({
   useEffect(() => {
     async function searchByMovie() {
       try {
-        const { results } = (await api.get(`search/movie?query=${movieName}&page=1&include_adult=false&language=pt-BR&api_key=${api_key}`)).data;
+        const { results } = (await api.get(`search/movie?query=${movieName}&page=1&include_adult=false&language=pt-BR&api_key=${import.meta.env.VITE_API_KEY}`)).data;
   
         if (!results || results.length === 0) {
           window.alert(`Não foi possivel encontrar o filme, tente novamente!`);

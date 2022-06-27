@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { api } from "../../../api/api";
-import { api_key } from "../../../api/chaveApi";
 import { PatternMovies } from "./PatternMovies";
 
 
@@ -20,7 +19,7 @@ export function PopularMovies() {
   
   useEffect(() => {
     async function getPopularMoveis() {
-      const { results } = (await api.get(`movie/popular?api_key=${api_key}&language=pt-BR&page=1`)).data;
+      const { results } = (await api.get(`movie/popular?api_key=${import.meta.env.VITE_API_KEY}&language=pt-BR&page=1`)).data;
       setResultsPopularMovies(results);
       setShowPopularMovies(true);
     };
