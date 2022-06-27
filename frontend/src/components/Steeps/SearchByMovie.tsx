@@ -18,6 +18,7 @@ type Movie = {
   vote_average: string;
 };
 
+const API_KEY = import.meta.env.VITE_API_KEY;
 
 export function SearchByMovie({
   movieName,
@@ -30,7 +31,7 @@ export function SearchByMovie({
   useEffect(() => {
     async function searchByMovie() {
       try {
-        const { results } = (await api.get(`search/movie?query=${movieName}&page=1&include_adult=false&language=pt-BR&api_key=${import.meta.env.VITE_API_KEY}`)).data;
+        const { results } = (await api.get(`search/movie?query=${movieName}&page=1&include_adult=false&language=pt-BR&api_key=${API_KEY}`)).data;
   
         if (!results || results.length === 0) {
           window.alert(`Não foi possivel encontrar o filme, tente novamente!`);
