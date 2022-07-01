@@ -9,7 +9,7 @@ const roots = ReactDOM.createRoot(document.getElementById("root")!);
 roots.render(
   <BrowserRouter>
     <Routes>
-      <Route path="/movies" element={<MoviesPopulares/>}/>
+      <Route path="/" element={<MoviesPopulares/>}/>
     </Routes>
   </BrowserRouter>
 );
