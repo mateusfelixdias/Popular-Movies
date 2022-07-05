@@ -46,7 +46,7 @@ export function PatternMovies({
       setIsFavoriteTrue();
     };
   };
-
+  
 
   return (
     <>
